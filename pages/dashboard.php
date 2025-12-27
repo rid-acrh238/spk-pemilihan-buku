@@ -4,6 +4,13 @@ if (!isset($koneksi)) {
     include 'config/koneksi.php';
 }
 
+session_start();
+// Cek apakah user sudah login
+if (!isset($_SESSION['status']) || $_SESSION['status'] != "login") {
+    header("Location: login.php"); // Jika belum login, tendang ke halaman login
+    exit;
+}
+
 // --- LOGIKA PHP: MENGAMBIL DATA STATISTIK ---
 
 // 1. Hitung Total Buku
